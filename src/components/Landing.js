@@ -4,4 +4,5 @@ const Landing = () => (
    Landing page will go here
   </section>
 );
+
 export default Landing;
