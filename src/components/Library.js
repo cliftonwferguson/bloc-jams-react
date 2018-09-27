@@ -20,10 +20,14 @@ class Library extends Component {
              <div>{album.songs.lenth} songs</div>
            </Link>
        )
+
        }
       </section>
-    );
+
+      )
+    };
+
   }
-}
+
 
 export default Library;
