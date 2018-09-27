@@ -14,7 +14,7 @@ class Album extends Component {
       isPlaying: false
     };
     this.audioElement = document.createElement('audio');
-    this.audioElement.src = album.songs[0].audioSRC;
+    this.audioElement.src = album.songs[0].audioSrc;
   }
 
   play() {
@@ -36,6 +36,7 @@ class Album extends Component {
     if (this.state.isPlaying && isSameSong) {
       this.pause();
     } else {
+      if (!isSameSong) { this.setSong(song); }
       this.play();
     }
   }
