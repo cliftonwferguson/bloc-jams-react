@@ -32,7 +32,7 @@ class Album extends Component {
             </colgroup>
             <tbody> {this.state.album.songs.map( (song, index) =>
               <tr>
-                <td className="song-number-row">{song.number}</td>
+                <td className="song-number-row">{index+1}</td>
                 <td className="song-title-row">{song.title}</td>
                 <td className="song-duration-row">{song.duration}</td>
               </tr>
