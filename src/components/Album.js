@@ -105,7 +105,7 @@ class Album extends Component {
 
      formatTime(time) {
        var minutes = Math.floor(time / 60);
-       var seconds = time - minutes * 60;
+       var seconds = Math.round(time - minutes * 60);
        return minutes + ":" + seconds
       }
 
@@ -143,7 +143,7 @@ class Album extends Component {
              </td>
 
                 <td className="song-title-row">{song.title}</td>
-                <td className="song-duration-row">{song.duration}</td>
+                <td className="song-duration-row">{this.formatTime(song.duration)}</td>
               </tr>
             )}
 
