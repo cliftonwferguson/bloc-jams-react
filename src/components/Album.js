@@ -14,6 +14,7 @@ class Album extends Component {
       currentSong: album.songs[0],
       currentTime: 0,
       duration: album.songs[0].duration,
+      currentVolume: .5,
       isPlaying: false,
       isHovered: false
     };
@@ -21,7 +22,7 @@ class Album extends Component {
     this.audioElement.src = album.songs[0].audioSrc;
   }
 
-    componentdidMount() {
+    componentDidMount() {
     this.eventListeners = {
       timeupdate: e => {
         this.setState({ currentTime: this.audioElement.currentTime });
@@ -45,6 +46,13 @@ class Album extends Component {
       this.audioElement.currentTime = newTime;
       this.setState({ currentTime: newTime });
     }
+
+    handleVolumeChange(e) {
+      const newVolume = e.target.value;
+      this.audioElement.volume = newVolume;
+      this.setState({ currentVolume: newVolume});
+    }
+
 
   play() {
     this.audioElement.play();
@@ -95,6 +103,11 @@ class Album extends Component {
        this.setState({isHovered: false});
      }
 
+     formatTime(time) {
+       var minutes = Math.floor(time / 60);
+       var seconds = Math.round(time - minutes * 60);
+       return minutes + ":" + seconds
+      }
 
   render() {
 
@@ -132,7 +145,7 @@ class Album extends Component {
 
 
                 <td className="song-title-row">{song.title}</td>
-                <td className="song-duration-row">{song.duration}</td>
+                <td className="song-duration-row">{this.formatTime(song.duration)}</td>
               </tr>
             )}
             </tbody>
@@ -142,10 +155,13 @@ class Album extends Component {
           currentSong={this.state.currentSong}
           currentTime={this.audioElement.currentTime}
           duration={this.audioElement.duration}
+          currentVolume={this.state.currentVolume}
            handleSongClick={ () => this.handleSongClick(this.state.currentSong)}
            handlePrevClick={ () => this.handlePrevClick()}
            handleNextClick={ () => this.handleNextClick()}
            handleTimeChange={ (e) => this.handleTimeChange(e)}
+           handleVolumeChange={ (e) => this.handleVolumeChange(e)}
+           formatTime={ (time) => this.formatTime(time)}
           />
       </section>
     );
