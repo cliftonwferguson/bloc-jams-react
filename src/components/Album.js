@@ -103,6 +103,11 @@ class Album extends Component {
        this.setState({isHovered: false});
      }
 
+     formatTime(time) {
+       var minutes = Math.floor(time / 60);
+       var seconds = time - minutes * 60;
+       return minutes + ":" + seconds
+      }
 
   render() {
 
@@ -155,6 +160,7 @@ class Album extends Component {
            handleNextClick={ () => this.handleNextClick()}
            handleTimeChange={ (e) => this.handleTimeChange(e)}
            handleVolumeChange={ (e) => this.handleVolumeChange(e)}
+           formatTime={ (time) => this.formatTime(time)}
           />
       </section>
     );
