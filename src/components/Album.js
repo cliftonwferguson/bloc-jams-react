@@ -48,7 +48,6 @@ class Album extends Component {
       this.setState({ currentTime: newTime });
     }
 
-    componentVolMount
 
   play() {
     this.audioElement.play();
