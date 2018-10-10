@@ -106,8 +106,12 @@ class Album extends Component {
      formatTime(time) {
        var minutes = Math.floor(time / 60);
        var seconds = Math.round(time - minutes * 60);
+       if (seconds < 10) {
+       return minutes + ": 0" + seconds
+     } else {
        return minutes + ":" + seconds
-      }
+     }
+   }
 
   render() {
 
