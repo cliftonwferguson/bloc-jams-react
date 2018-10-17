@@ -116,16 +116,16 @@ class Album extends Component {
   render() {
 
     return (
-      <section className="album">
+      <section className="album bg-primary">
       <section id="album-info">
       <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-      <div className ="album-details">
+      <div className ="album-details alert alert-success">
        <h1 id="album-title">{this.state.album.title}</h1>
-       <h2 className="artist">{this.state.album.artist}</h2>
+       <h2 className="artist bg-info">{this.state.album.artist}</h2>
        <div id="release-info">{this.state.album.releaseInfo}</div>
        </div>
        </section>
-       <table align="center" id="song-list">
+       <table align="center" className="table-hover bg-success" id="song-list">
             <colgroup>
               <col id="song-number-column" />
               <col id="song-title-column" />
